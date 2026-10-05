@@ -1,0 +1,60 @@
+/* ===== แก้สี/ดีไซน์ทั้งเว็บที่นี่ที่เดียว ===== */
+:root{--bg:#fff;--ink:#111;--mute:#8a8a8a;--line:#ececec;--soft:#f6f6f6;--radius:12px;--btn-radius:8px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;align-items:center;gap:24px;padding:16px 32px;border-bottom:1px solid var(--line)}
+.nav .logo{font-weight:600;margin-right:auto}
+.nav a{color:var(--mute)}
+.container{max-width:1040px;margin:0 auto;padding:40px 24px}
+.hero{text-align:center;padding:32px 0 8px}
+.hero h1{font-size:clamp(28px,5vw,40px);margin:0 0 6px;letter-spacing:-.02em}
+.hero p{color:var(--mute);margin:0}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:24px 0}
+.chip{border:1px solid var(--line);border-radius:99px;padding:4px 16px;color:var(--mute)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:20px}
+.thumb{aspect-ratio:1;background:var(--soft);border-radius:var(--radius);margin-bottom:10px}
+.price{color:var(--mute)}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);border:1px solid var(--ink);border-radius:var(--btn-radius);padding:10px 20px;font:inherit;cursor:pointer}
+.btn.outline{background:var(--bg);color:var(--ink)}
+.btn.full{display:block;width:100%;text-align:center}
+.field{display:block;width:100%;border:1px solid var(--line);border-radius:var(--btn-radius);padding:10px 12px;margin-bottom:10px;font:inherit}
+.detail{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.card{max-width:360px;margin:40px auto}
+.err{color:#b00020;font-size:14px}
+@media(max-width:700px){.detail{grid-template-columns:1fr}.nav{padding:14px 16px;gap:14px}}
+
+/* ===== ส่วนเพิ่ม: nav มือถือ, ตะกร้า, checkout, admin ===== */
+.nav{position:relative}
+.nav .links{display:flex;gap:22px;align-items:center}
+.burger{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink)}
+.badge{background:var(--ink);color:var(--bg);border-radius:99px;font-size:11px;padding:1px 7px;margin-left:2px}
+.cart-row{display:flex;gap:16px;align-items:center;border-bottom:1px solid var(--line);padding:16px 0}
+.cart-row .thumb{width:72px;height:72px;flex:none;margin:0}
+.cart-row .info{flex:1}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:26px;height:26px;border:1px solid var(--line);background:var(--bg);border-radius:6px;cursor:pointer}
+.summary{border:1px solid var(--line);border-radius:12px;padding:18px;position:sticky;top:20px}
+.split{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:start}
+.link-danger{color:#b00020;background:none;border:none;cursor:pointer;font:inherit}
+.badge-status{font-size:12px;border-radius:99px;padding:2px 10px;background:var(--soft);color:var(--mute)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.stat{border:1px solid var(--line);border-radius:12px;padding:14px}
+.stat span{color:var(--mute);font-size:13px}
+.stat b{display:block;font-size:20px;margin-top:2px}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
+.table th{color:var(--mute);font-weight:500;font-size:13px}
+.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.tabs a{padding:8px 4px;color:var(--mute);border-bottom:2px solid transparent}
+.tabs a.on{color:var(--ink);border-color:var(--ink)}
+.empty{text-align:center;color:var(--mute);padding:60px 0}
+@media(max-width:760px){
+  .nav .links{position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;align-items:flex-start;padding:12px 20px;border-bottom:1px solid var(--line);display:none;gap:14px}
+  .nav .links.open{display:flex}
+  .burger{display:block}
+  .split{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .table{display:block;overflow-x:auto;white-space:nowrap}
+}
