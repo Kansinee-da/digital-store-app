@@ -199,7 +199,7 @@ erDiagram
 
 **ภาพผลตรวจ:**
 
-![Lighthouse หน้าแรก](docs/lighthouse-home.png)
+![Lighthouse หน้าแรก](docs/lighthouse-home1.png)
 
 ## 6. ผลการรัน CI
 
