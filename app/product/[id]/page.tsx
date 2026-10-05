@@ -5,9 +5,11 @@ import { getProduct } from '@/lib/products'
 import BuyButtons from '@/components/BuyButtons'
 export const dynamic = 'force-dynamic'
 export const fetchCache = 'force-no-store'
-export default async function ProductPage({ params }: { params: { id: string } }) {
-  const p = await getProduct(params.id)
-if (!p || p.active === false) notFound() 
+
+export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const p = await getProduct(id)
+  if (!p || p.active === false) notFound()
   return (
     <>
       <main className="container detail">
@@ -25,7 +27,7 @@ if (!p || p.active === false) notFound()
       </main>
 
       <div className="container">
-        <OtherProducts currentId={params.id} />
+        <OtherProducts currentId={id} />
       </div>
     </>
   )

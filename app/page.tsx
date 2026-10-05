@@ -5,9 +5,11 @@ import { getProducts, categories } from '@/lib/products'
 export const dynamic = 'force-dynamic'
 export const fetchCache = 'force-no-store'
 
-export default async function Home({ searchParams }: { searchParams: { cat?: string; q?: string } }) {
-  const cat = searchParams.cat || 'ทั้งหมด'
-  const q = (searchParams.q || '').toLowerCase()
+export default async function Home({ searchParams }: { searchParams: Promise<{ cat?: string; q?: string }> }) {
+  const params = await searchParams
+  const cat = params.cat || 'ทั้งหมด'
+  const rawQ = params.q || ''
+  const q = rawQ.toLowerCase()
   const all = await getProducts()
   const list = all.filter(p => p.active !== false && (cat === 'ทั้งหมด' || p.category === cat) && p.name.toLowerCase().includes(q))
   return (
@@ -18,7 +20,7 @@ export default async function Home({ searchParams }: { searchParams: { cat?: str
         <h1>Digital Product for You</h1>
         <p>E-Book คอร์ส ดาวน์โหลดได้ทันที</p>
         <form style={{ maxWidth: 380, margin: '20px auto 0' }}>
-          <input className="field" name="q" defaultValue={searchParams.q} placeholder="ค้นหาสินค้า…" style={{ borderRadius: 99 }} />
+          <input className="field" name="q" defaultValue={rawQ} placeholder="ค้นหาสินค้า…" style={{ borderRadius: 99 }} />
         </form>
       </section>
       <div id="categories" className="chips" style={{ scrollMarginTop: 80 }}>
