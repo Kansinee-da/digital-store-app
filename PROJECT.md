@@ -200,6 +200,8 @@ erDiagram
 **ภาพผลตรวจ:**
 
 ![Lighthouse หน้าแรก](docs/lighthouse-home1.png)
+![Lighthouse รายละเอียดสินค้า](docs/lighthouse-home2.png)
+![Lighthouse ตะกร้า](docs/lighthouse-home3.png)
 
 ## 6. ผลการรัน CI
 
