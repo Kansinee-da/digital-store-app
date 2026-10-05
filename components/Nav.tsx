@@ -114,7 +114,7 @@ export function Nav() {
         .nav-logo { font-weight:700; font-size:18px; color:#111; text-decoration:none; }
         .nav-links { display:flex; gap:28px; align-items:center; }
         .nav-links a, .nav-links button, .nav-bottom button {
-          color:#888; font-size:14px; text-decoration:none; background:none; border:0;
+          color:#6b6b6b; font-size:14px; text-decoration:none; background:none; border:0;
           padding:0; cursor:pointer; font-family:inherit; }
         .nav-links a.on { color:#111; font-weight:600; }
         .nav-me { display:flex; align-items:center; }
@@ -129,7 +129,7 @@ export function Nav() {
             background:#fff; border-top:1px solid #eee; z-index:30;
             padding-bottom:env(safe-area-inset-bottom); }
           .nav-bottom a, .nav-bottom button { flex:1; display:flex; align-items:center;
-            justify-content:center; font-size:13px; color:#999; text-decoration:none; }
+            justify-content:center; font-size:13px; color:#6b6b6b; text-decoration:none; }
           .nav-bottom a.on { color:#111; font-weight:700; }
           body { padding-bottom:64px; }
         }
