@@ -3,7 +3,11 @@ import { supabaseForUser } from '@/lib/supabase-server'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import { isAdmin } from '@/lib/admin'
 
-export async function GET(req: NextRequest, { params }: { params: { productId: string } }) {
+export async function GET(
+  request: Request,
+  { params }: { params: Promise<{ productId: string }> }
+) {
+  const { productId } = await params; {
   const token = (req.headers.get('authorization') || '').replace('Bearer ', '')
   if (!token) return NextResponse.json({ error: 'กรุณาเข้าสู่ระบบก่อนดาวน์โหลด' }, { status: 401 })
 
