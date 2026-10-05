@@ -4,10 +4,11 @@ import { supabaseAdmin } from '@/lib/supabase-admin'
 import { isAdmin } from '@/lib/admin'
 
 export async function GET(
-  request: Request,
+  req: NextRequest,
   { params }: { params: Promise<{ productId: string }> }
 ) {
-  const { productId } = await params; {
+  const { productId } = await params
+
   const token = (req.headers.get('authorization') || '').replace('Bearer ', '')
   if (!token) return NextResponse.json({ error: 'กรุณาเข้าสู่ระบบก่อนดาวน์โหลด' }, { status: 401 })
 
@@ -18,11 +19,11 @@ export async function GET(
   // แอดมินดาวน์โหลดได้เลยโดยไม่ต้องซื้อ ส่วนลูกค้าทั่วไปต้องมีออเดอร์
   if (!isAdmin(user.email)) {
     const { data: order } = await sb.from('orders').select('id')
-      .eq('user_id', user.id).eq('product_id', params.productId).limit(1).maybeSingle()
+      .eq('user_id', user.id).eq('product_id', productId).limit(1).maybeSingle()
     if (!order) return NextResponse.json({ error: 'คุณยังไม่ได้ซื้อสินค้านี้' }, { status: 403 })
   }
 
-  const { data: product } = await sb.from('products').select('name, file_path').eq('id', params.productId).maybeSingle()
+  const { data: product } = await sb.from('products').select('name, file_path').eq('id', productId).maybeSingle()
   if (!product?.file_path) return NextResponse.json({ error: 'สินค้านี้ยังไม่มีไฟล์ให้ดาวน์โหลด' }, { status: 404 })
 
   const ext = product.file_path.split('.').pop()
